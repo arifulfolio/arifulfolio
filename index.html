@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- Favicon -->
+        <link rel="icon" type="image/png" href="./components//assets//favicon//logo2.png" />
+    
+    <!-- Primary Meta Tags -->
+    <title>ArifulFolio | Creative Designer & Developer - Ariful Islam</title>
+    <meta name="title" content="ArifulFolio | Creative Designer & Developer - Ariful Islam">
+    <meta name="description" content="Official portfolio of Ariful Islam (ArifulGFX / Valonix Studio). Senior Product Designer & Developer specializing in Brand Identity, Web Design, and Creative Solutions.">
+    <meta name="keywords" content="ariful, ariful islam, arifulgfx, arifulcreatorstudio, valonix studio, valonix, arifulfolio, graphic design, web design, ui/ux design, frontend developer, bangladesh designer, creative director, brand identity, logo design">
+    <meta name="author" content="Ariful Islam">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://arifulfolio.com/">
+    <meta property="og:title" content="ArifulFolio | Creative Designer & Developer - Ariful Islam">
+    <meta property="og:description" content="Official portfolio of Ariful Islam. Specializing in Brand Identity, Web Design, and Creative Solutions.">
+    <meta property="og:image" content="https://files.catbox.moe/u8878j.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://arifulfolio.com/">
+    <meta property="twitter:title" content="ArifulFolio | Creative Designer & Developer - Ariful Islam">
+    <meta property="twitter:description" content="Official portfolio of Ariful Islam. Specializing in Brand Identity, Web Design, and Creative Solutions.">
+    <meta property="twitter:image" content="https://files.catbox.moe/u8878j.png">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&family=Great+Vibes&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              display: ['Syne', 'sans-serif'],
+              script: ['Great Vibes', 'cursive'],
+            },
+            colors: {
+              primary: '#3827c8', // Vibrant Purple/Blue
+              dark: {
+                900: '#02021e', // Deep Navy/Black
+                800: '#0d0d2b', // Slightly lighter navy
+                700: '#171738',
+                600: '#2d2d2d',
+              }
+            },
+            backgroundImage: {
+              'pattern-dots': "radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px)",
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        background-color: #02021e;
+        color: #ffffff;
+      }
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #02021e;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #333;
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #3827c8;
+      }
+      .text-outline {
+        -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
+        color: transparent;
+      }
+
+      /* Marquee Animation */
+      @keyframes marquee {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+      }
+      
+      @keyframes marquee-reverse {
+        0% { transform: translateX(-50%); }
+        100% { transform: translateX(0); }
+      }
+
+      .animate-marquee {
+        animation: marquee 40s linear infinite;
+      }
+      
+      .animate-marquee-reverse {
+        animation: marquee-reverse 40s linear infinite;
+      }
+
+      /* Pause animation on hover */
+      .group:hover .animate-marquee,
+      .group:hover .animate-marquee-reverse {
+        animation-play-state: paused;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.2.1/",
+    "react": "https://aistudiocdn.com/react@^19.2.1",
+    "react-router-dom": "https://aistudiocdn.com/react-router-dom@^7.10.1",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.556.0",
+    "framer-motion": "https://aistudiocdn.com/framer-motion@^12.23.25",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.1/",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.31.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
