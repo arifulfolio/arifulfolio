@@ -5,7 +5,7 @@ import { ExternalLink, Eye, ArrowRight, CheckCircle2 } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { SEO } from "../components/SEO";
 
-// Nexus Images
+// boldpath Images
 import boldpath1 from "../components/assets/portfolios/brand identity/boldpath/1.jpg";
 import boldpath2 from "../components/assets/portfolios/brand identity/boldpath/2.jpg";
 import boldpath3 from "../components/assets/portfolios/brand identity/boldpath/3.jpg";
@@ -933,7 +933,9 @@ const ProjectDetails = () => {
       <SEO
         title={`${project.title} | ArifulFolio`}
         description={project.description}
-        keywords={`${project.title}, ${project.category}, ${project.technologies.join(', ')}, ariful islam project`}
+        keywords={`${project.title}, ${
+          project.category
+        }, ${project.technologies.join(", ")}, ariful islam project`}
       />
 
       {/* PARALLAX HERO HERO */}

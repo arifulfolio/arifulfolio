@@ -1,9 +1,23 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, ArrowUpRight, Github, Twitter, Linkedin, Instagram, Dribbble, Facebook, Mail, MapPin, Phone, ArrowUp } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Chatbot } from './Chatbot';
-import favicon from '../components/assets/favicon/logo2.png'
+import React, { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
+import {
+  Menu,
+  X,
+  ArrowUpRight,
+  Github,
+  Twitter,
+  Linkedin,
+  Instagram,
+  Dribbble,
+  Facebook,
+  Mail,
+  MapPin,
+  Phone,
+  ArrowUp,
+} from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Chatbot } from "./Chatbot";
+import favicon from "../components/assets/favicon/logo2.png";
 import {
   FaFacebookF,
   FaLinkedinIn,
@@ -23,8 +37,8 @@ const Navbar = () => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   // Close mobile menu on route change
@@ -41,27 +55,30 @@ const Navbar = () => {
     // { name: 'Testimonials', path: '/testimonials' },
     // { name: 'Blog', path: '/blog' },
     // { name: 'Templates', path: '/templates' },
+    { name: "Logo Store", path: "/sales" },
     { name: "Links", path: "/links" },
   ];
 
-
   return (
     <>
-      <motion.nav 
+      <motion.nav
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5 }}
         className={`fixed left-0 right-0 z-50 flex justify-center transition-all duration-300 ${
-          scrolled ? 'top-4' : 'top-0'
+          scrolled ? "top-4" : "top-0"
         }`}
       >
-        <div className={`
+        <div
+          className={`
           flex justify-between items-center px-6 transition-all duration-300
-          ${scrolled 
-            ? 'w-[95%] md:w-[90%] lg:w-[1200px] bg-dark-900/80 backdrop-blur-xl border border-white/10 rounded-full py-3 shadow-2xl shadow-black/50' 
-            : 'w-full py-6 bg-transparent'
+          ${
+            scrolled
+              ? "w-[95%] md:w-[90%] lg:w-[1200px] bg-dark-900/80 backdrop-blur-xl border border-white/10 rounded-full py-3 shadow-2xl shadow-black/50"
+              : "w-full py-6 bg-transparent"
           }
-        `}>
+        `}
+        >
           {/* Logo */}
           <Link
             to="/"
@@ -88,18 +105,22 @@ const Navbar = () => {
             {navLinks.map((link) => {
               const isActive = location.pathname === link.path;
               return (
-                <Link 
-                  key={link.path} 
+                <Link
+                  key={link.path}
                   to={link.path}
                   className={`relative px-5 py-2 rounded-full text-sm font-medium transition-colors duration-300 ${
-                    isActive ? 'text-white' : 'text-gray-400 hover:text-white'
+                    isActive ? "text-white" : "text-gray-400 hover:text-white"
                   }`}
                 >
                   {isActive && (
                     <motion.div
                       layoutId="active-nav-pill"
                       className="absolute inset-0 bg-primary rounded-full shadow-lg shadow-primary/20"
-                      transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 300,
+                        damping: 30,
+                      }}
                       style={{ zIndex: 0 }}
                     />
                   )}
@@ -128,10 +149,12 @@ const Navbar = () => {
             </div>
 
             {/* Mobile Toggle */}
-            <button 
+            <button
               className={`lg:hidden w-10 h-10 flex items-center justify-center rounded-full transition-colors ${
-                scrolled ? 'bg-white/10 hover:bg-primary hover:text-white' : 'text-white hover:text-primary'
-              }`} 
+                scrolled
+                  ? "bg-white/10 hover:bg-primary hover:text-white"
+                  : "text-white hover:text-primary"
+              }`}
               onClick={() => setIsOpen(true)}
             >
               <Menu size={24} />
@@ -143,7 +166,7 @@ const Navbar = () => {
       {/* Full Screen Mobile Menu Overlay */}
       <AnimatePresence>
         {isOpen && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, clipPath: "circle(0% at 100% 0%)" }}
             animate={{ opacity: 1, clipPath: "circle(150% at 100% 0%)" }}
             exit={{ opacity: 0, clipPath: "circle(0% at 100% 0%)" }}
@@ -152,56 +175,80 @@ const Navbar = () => {
           >
             {/* Background Pattern for Mobile Menu */}
             <div className="absolute inset-0 bg-pattern-dots bg-[size:30px_30px] opacity-[0.05] pointer-events-none"></div>
-            
+
             <div className="relative z-10 flex justify-between items-center p-6 border-b border-white/10 shrink-0">
-               <Link to="/" className="text-2xl font-display font-bold flex items-center gap-2">
+              <Link
+                to="/"
+                className="text-2xl font-display font-bold flex items-center gap-2"
+              >
                 <span className="text-primary text-3xl">
                   <img src={favicon} alt="" />
-                  </span> ArifulFolio
+                </span>{" "}
+                ArifulFolio
               </Link>
-              <button 
+              <button
                 onClick={() => setIsOpen(false)}
                 className="w-12 h-12 flex items-center justify-center rounded-full bg-white/10 hover:bg-primary hover:text-white transition-colors"
               >
                 <X size={24} />
               </button>
             </div>
-            
+
             <div className="flex-1 flex flex-col items-center gap-6 p-6 overflow-y-auto pt-10 pb-20">
               {navLinks.map((link, i) => (
                 <motion.div
                   key={link.path}
                   initial={{ opacity: 0, y: 40 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.1 + (i * 0.1) }}
+                  transition={{ delay: 0.1 + i * 0.1 }}
                   className="shrink-0"
                 >
-                  <Link 
+                  <Link
                     to={link.path}
                     className={`text-3xl md:text-5xl font-display font-bold transition-colors ${
-                      location.pathname === link.path ? 'text-primary' : 'text-white/50 hover:text-white'
+                      location.pathname === link.path
+                        ? "text-primary"
+                        : "text-white/50 hover:text-white"
                     }`}
                   >
                     {link.name}
                   </Link>
                 </motion.div>
               ))}
-              
+
               <motion.div
-                 initial={{ opacity: 0, y: 20 }}
-                 animate={{ opacity: 1, y: 0 }}
-                 transition={{ delay: 0.6 }}
-                 className="mt-4 flex flex-col items-center gap-6 shrink-0"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6 }}
+                className="mt-4 flex flex-col items-center gap-6 shrink-0"
               >
-                 <Link to="/contact" className="bg-primary text-white px-10 py-4 rounded-full font-bold text-xl flex items-center gap-2 hover:bg-white hover:text-black transition-all">
-                    Let's Talk <ArrowUpRight size={24} />
-                 </Link>
-                 
-                 <div className="flex gap-6 mt-4">
-                    <a href="https://twitter.com" className="text-gray-400 hover:text-primary"><Twitter size={24} /></a>
-                    <a href="https://linkedin.com" className="text-gray-400 hover:text-primary"><Linkedin size={24} /></a>
-                    <a href="https://instagram.com" className="text-gray-400 hover:text-primary"><Instagram size={24} /></a>
-                 </div>
+                <Link
+                  to="/contact"
+                  className="bg-primary text-white px-10 py-4 rounded-full font-bold text-xl flex items-center gap-2 hover:bg-white hover:text-black transition-all"
+                >
+                  Let's Talk <ArrowUpRight size={24} />
+                </Link>
+
+                <div className="flex gap-6 mt-4">
+                  <a
+                    href="https://twitter.com"
+                    className="text-gray-400 hover:text-primary"
+                  >
+                    <Twitter size={24} />
+                  </a>
+                  <a
+                    href="https://linkedin.com"
+                    className="text-gray-400 hover:text-primary"
+                  >
+                    <Linkedin size={24} />
+                  </a>
+                  <a
+                    href="https://instagram.com"
+                    className="text-gray-400 hover:text-primary"
+                  >
+                    <Instagram size={24} />
+                  </a>
+                </div>
               </motion.div>
             </div>
           </motion.div>
@@ -216,32 +263,93 @@ const Footer = () => (
     <div className="container mx-auto px-6">
       <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
         <div className="md:col-span-1">
-           <Link to="/" className="text-2xl font-display font-bold flex items-center gap-2 mb-6">
-            <span className="text-primary text-3xl">*</span> ArifulFolio
+          <Link
+            to="/"
+            className="text-2xl font-display font-bold flex items-center gap-2 mb-6"
+          >
+            {" "}
+            ArifulFolio
           </Link>
           <p className="text-gray-400 text-sm leading-relaxed">
-            Ariful Islam - Professional creative designer, creating distinct digital experiences.
+            Ariful Islam - Professional creative designer, creating distinct
+            digital experiences.
           </p>
         </div>
-        
+
         <div>
           <h4 className="text-lg font-bold mb-6">Quick Link</h4>
           <ul className="space-y-4 text-sm text-gray-400">
-            <li><Link to="/" className="hover:text-white transition-colors">Home</Link></li>
-            <li><Link to="/about" className="hover:text-white transition-colors">About</Link></li>
-            <li><Link to="/services" className="hover:text-white transition-colors">Services</Link></li>
-            <li><Link to="/projects" className="hover:text-white transition-colors">Projects</Link></li>
-            <li><Link to="/pricing" className="hover:text-white transition-colors">Pricing</Link></li>
-            <li><Link to="/links" className="hover:text-white transition-colors">Links</Link></li>
+            <li>
+              <Link to="/" className="hover:text-white transition-colors">
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link to="/about" className="hover:text-white transition-colors">
+                About
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/services"
+                className="hover:text-white transition-colors"
+              >
+                Services
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/projects"
+                className="hover:text-white transition-colors"
+              >
+                Projects
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/pricing"
+                className="hover:text-white transition-colors"
+              >
+                Pricing
+              </Link>
+            </li>
+            <li>
+              <Link to="/sales" className="hover:text-white transition-colors">
+                Logo Store
+              </Link>
+            </li>
+            <li>
+              <Link to="/links" className="hover:text-white transition-colors">
+                Links
+              </Link>
+            </li>
           </ul>
         </div>
 
         <div>
           <h4 className="text-lg font-bold mb-6">Address</h4>
           <ul className="space-y-4 text-sm text-gray-400">
-            <li className="flex items-center gap-2"><MapPin size={16} className="text-primary"/> Jashore, Khulna, Bangladesh</li>
-            <li><a href="mailto:arifulfolio@gmail.com" className="hover:text-white flex items-center gap-2"><Mail size={16} className="text-primary"/> arifulfolio@gmail.com</a></li>
-            <li><a href="tel:+8801938434733" className="hover:text-white flex items-center gap-2"><Phone size={16} className="text-primary"/> +880 1938434733</a></li>
+            <li className="flex items-center gap-2">
+              <MapPin size={16} className="text-primary" /> Jashore, Khulna,
+              Bangladesh
+            </li>
+            <li>
+              <a
+                href="mailto:arifulfolio@gmail.com"
+                className="hover:text-white flex items-center gap-2"
+              >
+                <Mail size={16} className="text-primary" />{" "}
+                arifulfolio@gmail.com
+              </a>
+            </li>
+            <li>
+              <a
+                href="tel:+8801938434733"
+                className="hover:text-white flex items-center gap-2"
+              >
+                <Phone size={16} className="text-primary" /> +880 1938434733
+              </a>
+            </li>
           </ul>
         </div>
 
@@ -315,66 +423,90 @@ const Footer = () => (
           </div>
         </div>
       </div>
-      
+
       <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500 text-center md:text-left gap-4">
-        <p>&copy; 2024 ArifulFolio. All rights reserved.</p>
+        <p>&copy; 2025 ArifulFolio. All rights reserved.</p>
         <div className="flex gap-6">
-          <Link to="/privacy" className="hover:text-white">Privacy Policy</Link>
-          <Link to="/terms" className="hover:text-white">Terms of Use</Link>
+          <Link to="/privacy" className="hover:text-white">
+            Privacy Policy
+          </Link>
+          <Link to="/terms" className="hover:text-white">
+            Terms of Use
+          </Link>
         </div>
       </div>
     </div>
   </footer>
 );
 
-export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const Layout: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 300);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <div className="relative min-h-screen bg-dark-900 text-white selection:bg-primary selection:text-white font-sans overflow-x-hidden">
       {/* Global Background Effects */}
       <div className="fixed inset-0 z-0 pointer-events-none">
         {/* Pattern Grid - Fixed to stay in place during scroll */}
         <div className="absolute inset-0 bg-pattern-dots bg-[size:30px_30px] opacity-[0.07]"></div>
-        
+
         {/* Blurry Gradient Orbs - Animated */}
-        <motion.div 
-           animate={{ 
-             scale: [1, 1.2, 1],
-             opacity: [0.2, 0.3, 0.2]
-           }}
-           transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-           className="absolute top-[-10%] left-[-10%] w-[600px] h-[600px] bg-primary/20 rounded-full blur-[120px] mix-blend-screen"
+        <motion.div
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.2, 0.3, 0.2],
+          }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-[-10%] left-[-10%] w-[600px] h-[600px] bg-primary/20 rounded-full blur-[120px] mix-blend-screen"
         ></motion.div>
-        
-        <motion.div 
-           animate={{ 
-             scale: [1, 1.1, 1],
-             opacity: [0.1, 0.2, 0.1]
-           }}
-           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-           className="absolute bottom-[-10%] right-[-10%] w-[700px] h-[700px] bg-blue-600/10 rounded-full blur-[120px] mix-blend-screen"
+
+        <motion.div
+          animate={{
+            scale: [1, 1.1, 1],
+            opacity: [0.1, 0.2, 0.1],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 1,
+          }}
+          className="absolute bottom-[-10%] right-[-10%] w-[700px] h-[700px] bg-blue-600/10 rounded-full blur-[120px] mix-blend-screen"
         ></motion.div>
       </div>
 
       <Navbar />
-      
-      <main className="relative z-10">
-        {children}
-      </main>
+
+      <main className="relative z-10">{children}</main>
 
       {/* <Chatbot /> */}
       <Footer />
-      
+
       {/* Scroll to top button */}
-      <motion.button 
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        whileHover={{ y: -5 }}
-        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-        className="fixed bottom-8 right-8 z-50 bg-primary text-white p-3 rounded-full shadow-lg hover:shadow-primary/50 transition-all duration-300 group"
-        aria-label="Scroll to top"
-      >
-        <ArrowUp size={24} />
-      </motion.button>
+      <AnimatePresence>
+        {showScrollTop && (
+          <motion.button
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.5 }}
+            whileHover={{ y: -5 }}
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="fixed bottom-8 right-8 z-50 bg-primary text-white p-3 rounded-full shadow-lg hover:shadow-primary/50 transition-all duration-300 group"
+            aria-label="Scroll to top"
+          >
+            <ArrowUp size={24} />
+          </motion.button>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

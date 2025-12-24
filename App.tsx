@@ -21,6 +21,8 @@ import BlogDetails from './pages/BlogDetails';
 import NotFound from './pages/NotFound';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsOfUse from './pages/TermsOfUse';
+import Sales from './pages/Sales';
+import SalesDetails from './pages/SalesDetails';
 
 function App() {
   return (
@@ -46,6 +48,8 @@ function App() {
           <Route path="/blog/:id" element={<BlogDetails />} />
           <Route path="/privacy" element={<PrivacyPolicy />} />
           <Route path="/terms" element={<TermsOfUse />} />
+          <Route path="/sales" element={<Sales />} />
+          <Route path="/sales/:slug" element={<SalesDetails />} />
           {/* Catch-all 404 Route */}
           <Route path="*" element={<NotFound />} />
         </Routes>
